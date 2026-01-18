@@ -14,9 +14,9 @@ import ClientOnly from "./client-only";
 
 /* ================= Typing Effect ================= */
 const roles = [
-  "B.Tech IT Student",
-  "Frontend Developer",
-  "Web Enthusiast",
+  "B.Tech Information Technology Student",
+  "Full stack Developer ",
+  "Aspiring Software Engineer",
 ];
 
 function useTypingEffect(words: string[], speed = 120, pause = 1500) {
@@ -108,6 +108,7 @@ export default function Hero() {
       </ClientOnly>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+
         {/* Neon image border */}
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
@@ -123,8 +124,8 @@ export default function Hero() {
             />
             <div className="relative w-full h-full rounded-3xl bg-background overflow-hidden">
               <img
-                src="/files/images/IMG_20250725_234801.jpg"
-                alt="Jeyasakthi P"
+                src="/files/images/jeyy1.jpg"
+                alt="Jeyasakthi P – B.Tech Information Technology Student & Frontend Developer"
                 className="w-full h-full object-cover rounded-3xl"
               />
             </div>
@@ -150,19 +151,24 @@ export default function Hero() {
         </div>
 
         {/* Description */}
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
           B.Tech Information Technology undergraduate passionate about frontend
           development, modern UI design, and scalable web solutions.
         </p>
 
-        {/* Neon Buttons (FILLED) */}
+        {/* Tech Stack */}
+        <p className="text-sm text-muted-foreground mb-12">
+          Tech Stack: React · Next.js · Tailwind CSS · JavaScript · Git & GitHub
+        </p>
+
+        {/* Buttons */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
         >
-          {/* Primary */}
+          {/* Contact */}
           <motion.a
             whileHover={{ y: -4, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
@@ -178,7 +184,7 @@ export default function Hero() {
             Get In Touch
           </motion.a>
 
-          {/* Secondary */}
+          {/* Resume */}
           <motion.a
             whileHover={{ y: -4, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
@@ -194,9 +200,26 @@ export default function Hero() {
             <Download size={20} />
             Download CV
           </motion.a>
+
+          {/* GitHub */}
+          <motion.a
+            whileHover={{ y: -4, scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            href="https://github.com/Jeyasakthi4"
+            target="_blank"
+            className="px-10 py-3 rounded-xl font-semibold text-primary-foreground
+              bg-primary
+              shadow-[0_0_25px_rgba(99,102,241,0.6)]
+              hover:shadow-[0_0_40px_rgba(99,102,241,0.9)]
+              transition-all duration-300
+              flex items-center gap-2 justify-center"
+          >
+            <Github size={20} />
+            View GitHub
+          </motion.a>
         </motion.div>
 
-        {/* Social icons */}
+        {/* Social Icons */}
         <div className="flex justify-center gap-6 mb-12">
           {[
             { icon: Github, href: "https://github.com/Jeyasakthi4" },
@@ -220,7 +243,7 @@ export default function Hero() {
           })}
         </div>
 
-        {/* Scroll down */}
+        {/* Scroll Down */}
         <motion.button onClick={scrollToNext}>
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -235,5 +258,3 @@ export default function Hero() {
     </section>
   );
 }
-
-
