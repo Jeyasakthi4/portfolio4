@@ -10,18 +10,18 @@ export default function Footer() {
     {
       icon: Github,
       href: "https://github.com/Jeyasakthi4",
-      label: "GitHub"
+      label: "GitHub",
     },
     {
       icon: Linkedin,
       href: "https://www.linkedin.com/in/jeya-sakthi-p",
-      label: "LinkedIn"
+      label: "LinkedIn",
     },
     {
       icon: Mail,
       href: "mailto:jeyasakthipandiaraja@gmail.com",
-      label: "Email"
-    }
+      label: "Email",
+    },
   ];
 
   const quickLinks = [
@@ -31,7 +31,7 @@ export default function Footer() {
     { name: "Projects", href: "#projects" },
     { name: "Experience", href: "#experience" },
     { name: "Education", href: "#education" },
-    { name: "Contact", href: "#contact" }
+    { name: "Contact", href: "#contact" },
   ];
 
   const scrollToTop = () => {
@@ -40,143 +40,150 @@ export default function Footer() {
 
   const handleNavClick = (href: string) => {
     const element = document.getElementById(href.substring(1));
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <footer className="bg-background/80 backdrop-blur-md border-t border-border">
+    <footer className="relative bg-background/80 backdrop-blur-md border-t border-border">
+      {/* Glow Divider */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Brand Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              <h3 className="text-2xl font-bold text-primary">Jeyasakthi P</h3>
-              <p className="text-muted-foreground max-w-sm">
-                Computer Science undergraduate passionate about frontend development, 
-                cybersecurity, and creating innovative web solutions.
-              </p>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => {
-                  const Icon = social.icon;
-                  return (
-                    <motion.a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 rounded-lg bg-accent hover:bg-primary hover:text-primary-foreground transition-all duration-200 flex items-center justify-center"
-                      aria-label={social.label}
-                    >
-                      <Icon size={18} />
-                    </motion.a>
-                  );
-                })}
-              </div>
-            </motion.div>
+        {/* Main Footer */}
+        <div className="py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Brand */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-4"
+          >
+            <h3 className="text-2xl font-bold text-primary">
+              Jeyasakthi P
+            </h3>
+            <p className="text-muted-foreground max-w-sm">
+              B.Tech Information Technology undergraduate specializing in frontend development,
+modern web technologies, and performance-driven user interfaces.
 
-            {/* Quick Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              <h4 className="text-lg font-semibold text-foreground">Quick Links</h4>
-              <div className="grid grid-cols-2 gap-2">
-                {quickLinks.map((link, index) => (
+            </p>
+
+            <div className="flex gap-4">
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon;
+                return (
                   <motion.a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(link.href);
-                    }}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm py-1"
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.15 }}
+                    className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center
+                               hover:bg-primary hover:text-primary-foreground
+                               hover:shadow-[0_0_18px_rgba(59,130,246,0.6)]
+                               transition"
                   >
-                    {link.name}
+                    <Icon size={18} />
                   </motion.a>
-                ))}
-              </div>
-            </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
 
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              <h4 className="text-lg font-semibold text-foreground">Get In Touch</h4>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <p>📧 jeyasakthipandiaraja@gmail.com</p>
-                <p>📱 +91 9383493906</p>
-                <p>📍 Chennai, India</p>
-              </div>
-              <div className="pt-4">
-                <p className="text-sm text-muted-foreground">
-                  Open to opportunities and collaborations
-                </p>
-              </div>
-            </motion.div>
-          </div>
+          {/* Quick Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="space-y-4"
+          >
+            <h4 className="text-lg font-semibold">Quick Links</h4>
+            <div className="grid grid-cols-2 gap-2">
+              {quickLinks.map((link, index) => (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(link.href);
+                  }}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="relative text-sm text-muted-foreground hover:text-primary transition"
+                >
+                  <span className="after:absolute after:left-0 after:-bottom-1 after:h-[1px]
+                                   after:w-0 after:bg-primary after:transition-all
+                                   hover:after:w-full">
+                    {link.name}
+                  </span>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-4"
+          >
+            <h4 className="text-lg font-semibold">Get In Touch</h4>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p>📧 jeyasakthipandiaraja@gmail.com</p>
+              <p>📱 +91 9383493906</p>
+              <p>📍 Chennai, India</p>
+            </div>
+            <p className="text-sm text-muted-foreground pt-2">
+              Open to opportunities & collaborations 🚀
+            </p>
+          </motion.div>
         </div>
 
-        {/* Bottom Footer */}
+        {/* Bottom */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="py-6 border-t border-border"
+          transition={{ delay: 0.3 }}
+          className="py-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4"
         >
-          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-              <span>© {currentYear} Jeyasakthi P. Made with</span>
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
-              >
-                <Heart size={16} className="text-red-500 fill-current" />
-              </motion.div>
-              <span>and lots of ☕</span>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-muted-foreground">
-                Built with Next.js & Tailwind CSS
-              </span>
-              <motion.button
-                onClick={scrollToTop}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-8 h-8 rounded-lg bg-accent hover:bg-primary hover:text-primary-foreground transition-all duration-200 flex items-center justify-center"
-                aria-label="Scroll to top"
-                suppressHydrationWarning
-              >
-                <ArrowUp size={16} />
-              </motion.button>
-            </div>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            © {currentYear} Jeyasakthi P · Made with
+            <motion.span
+              animate={{ scale: [1, 1.25, 1] }}
+              transition={{ repeat: Infinity, duration: 1.2, repeatDelay: 2 }}
+            >
+              <Heart size={16} className="text-red-500 fill-current" />
+            </motion.span>
+            & ☕
+          </div>
+
+          <div className="flex items-center gap-4">
+            <span className="text-sm text-muted-foreground">
+              Next.js & Tailwind CSS
+            </span>
+            <motion.button
+              onClick={scrollToTop}
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Scroll to top"
+              className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center
+                         hover:bg-primary hover:text-primary-foreground
+                         hover:shadow-[0_0_18px_rgba(59,130,246,0.6)]
+                         transition"
+            >
+              <ArrowUp size={16} />
+            </motion.button>
           </div>
         </motion.div>
       </div>
