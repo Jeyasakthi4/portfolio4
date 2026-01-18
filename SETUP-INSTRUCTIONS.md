@@ -131,4 +131,4 @@ If you need help with any of these steps, feel free to ask!
 
 **Created**: January 2025
 **For**: Lingala Bishma Goud
-**Portfolio**: Frontend Developer & Cybersecurity Enthusiast
+**Portfolio**: Full Stack Developer & Cybersecurity Enthusiast

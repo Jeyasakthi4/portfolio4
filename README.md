@@ -1,8 +1,8 @@
 # 🚀 Lingala Bishma Goud - Portfolio
 
-> **Frontend Developer & Cybersecurity Enthusiast**
+> **Full Stack Developer**
 
-A modern, responsive portfolio website showcasing my skills in frontend development, web technologies, and cybersecurity. Built with Next.js, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website showcasing my skills in full stack development, web technologies, and cybersecurity. Built with Next.js, TypeScript, and Tailwind CSS.
 
 ## 🌟 Live Demo
 
@@ -14,7 +14,7 @@ A modern, responsive portfolio website showcasing my skills in frontend developm
 I'm a Computer Science undergraduate specializing in Cybersecurity at Sphoorthy Engineering College, Hyderabad. Passionate about building responsive user interfaces and collaborative coding, with hands-on experience in cybersecurity practices.
 
 ### 🎯 Key Highlights
-- **Frontend Development**: HTML5, CSS3, JavaScript, Bootstrap 5
+- **Full Stack Development**: HTML5, CSS3, JavaScript, Bootstrap 5, React, Node.js
 - **Programming**: Python, Java, C, PHP
 - **Cybersecurity**: Ethical Hacking, Vulnerability Assessment, Secure Coding
 - **Leadership**: Vice President of Cyber GenZ Club

@@ -96,7 +96,7 @@ Here are different professional shape options for your profile picture. Each has
 
 ## 🎯 **Recommendations by Industry:**
 
-### **Frontend Development & Tech (Your Field):**
+### **Full Stack Development & Tech (Your Field):**
 1. **Rounded Square** ✅ (Currently active) - Perfect choice!
 2. **Circle** - Classic and safe
 3. **Hexagon** - Shows tech personality
@@ -117,7 +117,7 @@ To switch to any option, replace the profile image section in `src/components/he
 
 ## 💡 **Current Recommendation:**
 
-Your current **Rounded Square** shape is perfect for your profile as a Frontend Developer & Cybersecurity Enthusiast because:
+Your current **Rounded Square** shape is perfect for your profile as a Full Stack Developer & Cybersecurity Enthusiast because:
 - ✅ Modern and trendy (appeals to tech industry)
 - ✅ Professional but approachable
 - ✅ Stands out from typical circular photos

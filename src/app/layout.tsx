@@ -16,25 +16,28 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jeyasakthi P - Frontend Developer & Cybersecurity Enthusiast",
+    default: "Jeyasakthi P - Full Stack Developer",
     template: "%s | Jeyasakthi P",
   },
-  description: "Computer Science undergraduate skilled in frontend development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
-  keywords: ["Jeyasakthi P", "Jeyasakthi", "frontend developer", "web developer", "cybersecurity", "HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "student management system", "Chennai"],
+  description: "Computer Science undergraduate skilled in full stack development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
+  keywords: ["Jeyasakthi P", "Jeyasakthi", "full stack developer", "web developer", "cybersecurity", "HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "student management system", "Chennai"],
   authors: [{ name: "Jeyasakthi P" }],
   creator: "Jeyasakthi P",
+  icons: {
+    icon: "/icon(2).png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://lingala-bishma-goud-portfolio.vercel.app",
-    title: "Lingala Bishma Goud - Frontend Developer & Cybersecurity Enthusiast",
-    description: "Computer Science undergraduate skilled in frontend development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
-    siteName: "Lingala Bishma Goud Portfolio",
+    url: "https://jeyasakthi-p-portfolio.vercel.app",
+    title: "Jeyasakthi P - Full Stack Developer",
+    description: "Computer Science undergraduate skilled in full stack development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
+    siteName: "Jeyasakthi Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lingala Bishma Goud - Frontend Developer & Cybersecurity Enthusiast",
-    description: "Computer Science undergraduate skilled in frontend development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
+    title: "jeyasakthi - Full Stack Developer ",
+    description: "Computer Science undergraduate skilled in full stack development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
   },
   robots: {
     index: true,

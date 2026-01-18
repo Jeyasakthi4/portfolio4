@@ -30,7 +30,7 @@ const internships = [
     period: "Jun 2025 – Jul 2025",
     location: "Offline",
     description:
-      "Worked on client-based web projects focusing on responsive UI development and frontend components.",
+      "Worked on client-based web projects focusing on responsive UI development and full stack components.",
     skills: ["HTML", "CSS", "JavaScript", "React"],
     certificate: "/files/certificates/makos intern.pdf",
   },

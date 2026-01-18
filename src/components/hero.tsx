@@ -125,7 +125,7 @@ export default function Hero() {
             <div className="relative w-full h-full rounded-3xl bg-background overflow-hidden">
               <img
                 src="/files/images/jeyy1.jpg"
-                alt="Jeyasakthi P – B.Tech Information Technology Student & Frontend Developer"
+                alt="Jeyasakthi P – B.Tech Information Technology Student & Full Stack Developer"
                 className="w-full h-full object-cover rounded-3xl"
               />
             </div>
@@ -152,7 +152,7 @@ export default function Hero() {
 
         {/* Description */}
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
-          B.Tech Information Technology undergraduate passionate about frontend
+          B.Tech Information Technology undergraduate passionate about full stack
           development, modern UI design, and scalable web solutions.
         </p>
 

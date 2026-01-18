@@ -62,7 +62,7 @@ export default function Contact() {
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm always open to discussing internship opportunities, frontend projects,
+            I'm always open to discussing internship opportunities, full stack projects,
             and innovative ideas in web and software development.
           </p>
         </motion.div>

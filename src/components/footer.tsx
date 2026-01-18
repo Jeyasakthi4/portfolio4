@@ -63,7 +63,7 @@ export default function Footer() {
               Jeyasakthi P
             </h3>
             <p className="text-muted-foreground max-w-sm">
-              B.Tech Information Technology undergraduate specializing in frontend development,
+              B.Tech Information Technology undergraduate specializing in full stack development,
 modern web technologies, and performance-driven user interfaces.
 
             </p>

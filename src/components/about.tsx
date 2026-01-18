@@ -14,12 +14,20 @@ import {
 import { useEffect, useState } from "react";
 
 export default function About() {
-  /* ================= Cursor Glow ================= */
+  /* ================= Cursor Glow (Optimized) ================= */
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const move = (e: MouseEvent) =>
-      setCursor({ x: e.clientX, y: e.clientY });
+    let rafId = 0;
+
+    const move = (e: MouseEvent) => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        setCursor({ x: e.clientX, y: e.clientY });
+        rafId = 0;
+      });
+    };
+
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
   }, []);
@@ -39,14 +47,22 @@ export default function About() {
   const stats = [
     { icon: GraduationCap, value: "BTech IT", label: "Undergraduate" },
     { icon: Code, value: "10+", label: "Projects Built" },
-    { icon: Award, value: "5+", label: "Tech Skills" },
+    { icon: Award, value: "5+", label: "Core Skills" },
+  ];
+
+  const techStack = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Git",
+    "SQL",
   ];
 
   return (
-    <section
-      id="about"
-      className="relative py-24 overflow-hidden"
-    >
+    <section id="about" className="relative py-24 overflow-hidden">
       {/* Cursor Glow */}
       <div
         className="pointer-events-none fixed inset-0 z-0"
@@ -55,7 +71,11 @@ export default function About() {
         }}
       />
 
-      {/* Background */}
+      {/* Floating Background Shapes */}
+      <div className="absolute top-20 left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-56 h-56 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+
+      {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,7 +87,7 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="relative inline-block text-4xl sm:text-5xl font-bold mb-4">
             About <span className="text-primary">Me</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -84,17 +104,16 @@ export default function About() {
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ rotateX: 5, rotateY: -5, scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
                 viewport={{ once: true }}
                 className="rounded-2xl p-6 bg-background/60 backdrop-blur
-                border border-primary/20
-                hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]
-                transition-all duration-300 text-center"
+                border border-primary/20 text-center
+                hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]"
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <Icon size={28} className="mx-auto text-primary mb-3" />
-                <h3 className="text-2xl font-bold text-foreground">
-                  {stat.value}
-                </h3>
+                <h3 className="text-2xl font-bold">{stat.value}</h3>
                 <p className="text-muted-foreground text-sm">{stat.label}</p>
               </motion.div>
             );
@@ -102,7 +121,7 @@ export default function About() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-14 items-start">
-          {/* Left */}
+          {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -119,23 +138,19 @@ export default function About() {
                     key={info.label}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ rotateX: 5, rotateY: -5, scale: 1.02 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     className="flex items-center gap-4 p-4 rounded-xl
-                    bg-background/60 backdrop-blur
-                    border border-border
-                    hover:border-primary/40 hover:shadow-md transition"
+                    bg-background/60 backdrop-blur border border-border"
+                    style={{ transformStyle: "preserve-3d" }}
                   >
                     <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
                       <Icon size={20} className="text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">
-                        {info.label}
-                      </p>
-                      <p className="font-medium text-foreground">
-                        {info.value}
-                      </p>
+                      <p className="text-sm text-muted-foreground">{info.label}</p>
+                      <p className="font-medium">{info.value}</p>
                     </div>
                   </motion.div>
                 );
@@ -147,6 +162,7 @@ export default function About() {
               <Languages size={20} className="text-primary mr-2" />
               Languages
             </h4>
+
             <div className="space-y-3">
               {languages.map((lang, index) => (
                 <motion.div
@@ -165,7 +181,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right */}
+          {/* Right Column */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -179,21 +195,35 @@ export default function About() {
                 I&apos;m a BTech Information Technology undergraduate passionate
                 about software development and modern web technologies.
               </p>
-
               <p>
-                My interests lie in frontend development, UI engineering, and
-                understanding how secure systems are built and maintained.
+                My interests lie in full stack development, UI engineering, and
+                understanding scalable architectures and application design.
               </p>
-
               <p>
                 I enjoy solving real-world problems, collaborating on projects,
                 and continuously improving my technical and logical skills.
               </p>
-
               <p>
                 I&apos;m eager to gain industry exposure and contribute to
                 impactful projects while growing as a professional developer.
               </p>
+            </div>
+
+            {/* Tech Stack */}
+            <div className="mt-6 flex flex-wrap gap-3">
+              {techStack.map((tech, i) => (
+                <motion.span
+                  key={tech}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="px-4 py-1.5 rounded-full text-sm
+                  bg-primary/10 border border-primary/30
+                  hover:bg-primary/20 hover:scale-105 transition"
+                >
+                  {tech}
+                </motion.span>
+              ))}
             </div>
 
             {/* Highlights */}
@@ -202,24 +232,23 @@ export default function About() {
                 <Award size={20} className="text-primary mr-2" />
                 Key Highlights
               </h4>
+
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   "BTech Information Technology Student",
-                  "Frontend & Web Development",
-                  "Strong Problem Solving",
+                  "Full Stack Web Development",
+                  "Strong Problem Solving Skills",
                   "Fast Learner & Tech Enthusiast",
                 ].map((item, index) => (
                   <motion.div
                     key={item}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="p-4 rounded-xl
-                    bg-background/60 backdrop-blur
-                    border border-primary/20
-                    hover:shadow-[0_0_25px_rgba(99,102,241,0.35)]
-                    transition-all"
+                    className="p-4 rounded-xl bg-background/60 backdrop-blur
+                    border border-primary/20"
                   >
                     <span className="text-sm font-medium">{item}</span>
                   </motion.div>
