@@ -1,4 +1,4 @@
-# 🚀 Lingala Bishma Goud - Portfolio
+# 🚀 Jeyasakthi P - Portfolio
 
 > **Full Stack Developer**
 
@@ -11,15 +11,12 @@ A modern, responsive portfolio website showcasing my skills in full stack develo
 
 ## 👨‍💻 About Me
 
-I'm a Computer Science undergraduate specializing in Cybersecurity at Sphoorthy Engineering College, Hyderabad. Passionate about building responsive user interfaces and collaborative coding, with hands-on experience in cybersecurity practices.
+I'm a Information Technology undergraduate specializing in Web Technologies at Sairam Engineering College, Chennai. Passionate about building responsive user interfaces and collaborative coding, with hands-on experience in cybersecurity practices.
 
 ### 🎯 Key Highlights
 - **Full Stack Development**: HTML5, CSS3, JavaScript, Bootstrap 5, React, Node.js
-- **Programming**: Python, Java, C, PHP
-- **Cybersecurity**: Ethical Hacking, Vulnerability Assessment, Secure Coding
-- **Leadership**: Vice President of Cyber GenZ Club
-- **Certifications**: Google Cybersecurity, AICTE Virtual Internship
-
+- **Programming**: Python, Java, C, PHP,Javascript,React,HTML,CSS
+- 
 ## 🛠️ Technologies Used
 
 - **Framework**: [Next.js 15](https://nextjs.org/)
@@ -100,8 +97,8 @@ portfolio/
 ## 📞 Contact Information
 
 - **Email**: [jeyasakthipandiraja@gmail.com](mailto:jeyasakthipandiaraja@gmail.com)
-- **Phone**: +91 9292100822
-- **Location**: Hyderabad, India
+- **Phone**: +91 9383493906
+- **Location**: Chennai, India
 - **LinkedIn**: [jeya-sakthi-p](https://www.linkedin.com/in/jeya-sakthi-p)
 - **GitHub**: [Jeyasakthi4](https://github.com/Jeyasakthi4)
 - **Instagram**: [@jeya_sakthi2005](https://www.instagram.com/jeya_sakthi2005)
@@ -143,6 +140,6 @@ While this is a personal portfolio, suggestions and feedback are welcome! Feel f
 
 ---
 
-**Built with ❤️ by Lingala Bishma Goud**
+**Built with ❤️ by Jeyasakthi**
 
-*Last Updated: January 2025*
+*Last Updated: January 2026*
