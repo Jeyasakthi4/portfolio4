@@ -5,16 +5,15 @@ import { MapPin, Phone, Mail, Calendar, Languages, Award } from "lucide-react";
 
 export default function About() {
   const personalInfo = [
-    { icon: MapPin, label: "Location", value: "Hyderabad, India" },
-    { icon: Phone, label: "Phone", value: "+91 9292100822" },
-    { icon: Mail, label: "Email", value: "bishmagoud321@gmail.com" },
-    { icon: Calendar, label: "Age", value: "21 years old" },
+    { icon: MapPin, label: "Location", value: "Chennai, India" },
+    { icon: Phone, label: "Phone", value: "+91 9383493906" },
+    { icon: Mail, label: "Email", value: "jeyasakthipandiaraja@gmail.com" },
+    { icon: Calendar, label: "Age", value: "20 years old" },
   ];
 
   const languages = [
     { name: "English", level: "Fluent" },
-    { name: "Hindi", level: "Fluent" },
-    { name: "Telugu", level: "Native" },
+    { name: "Tamil", level: "Native" },
   ];
 
   return (
@@ -31,7 +30,7 @@ export default function About() {
             About <span className="text-primary">Me</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Get to know more about who I am, what I do, and what skills I have
+            Get to know more about who I am, what I do, and the skills I bring
           </p>
         </motion.div>
 
@@ -46,7 +45,7 @@ export default function About() {
             <h3 className="text-2xl font-bold text-foreground mb-6">
               Personal Information
             </h3>
-            
+
             <div className="space-y-4 mb-8">
               {personalInfo.map((info, index) => {
                 const Icon = info.icon;
@@ -105,34 +104,32 @@ export default function About() {
             <h3 className="text-2xl font-bold text-foreground mb-6">
               Who Am I?
             </h3>
-            
+
             <div className="space-y-4 text-muted-foreground">
               <p>
-                I&apos;m a passionate Computer Science undergraduate specializing in Cybersecurity
-                at Sphoorthy Engineering College, Hyderabad. With a strong foundation in 
-                frontend development and web technologies, I&apos;m dedicated to creating
-                responsive and user-friendly web applications.
+                I&apos;m a dedicated BTech Information Technology undergraduate with a strong
+                interest in software development and modern web technologies. I enjoy
+                building clean, responsive, and user-focused applications.
               </p>
-              
+
               <p>
-                My journey in technology began with a curiosity about how websites work, 
-                which led me to master HTML, CSS, JavaScript, and modern frameworks like 
-                Bootstrap. I&apos;m proficient in multiple programming languages including
+                My technical journey started with learning how websites and applications
+                work, which led me to develop skills in HTML, CSS, JavaScript, and
+                frontend frameworks. I&apos;m also familiar with programming languages such as
                 Python, Java, C, and PHP.
               </p>
-              
+
               <p>
-                As the Vice President of the Cyber GenZ Club at my college, I&apos;ve organized
-                multiple cybersecurity workshops for over 150 students, promoting 
-                student-led learning in AI and tech innovation. I believe in collaborative 
-                coding and the power of teamwork to solve complex problems.
+                I actively participate in technical activities and collaborative projects,
+                where I enjoy solving real-world problems through logical thinking and
+                efficient coding practices. I believe continuous learning is essential
+                in the ever-evolving IT industry.
               </p>
-              
+
               <p>
-                I&apos;m excited about gaining real-world experience and contributing to
-                innovative projects in a flexible remote environment. My goal is to 
-                bridge the gap between cybersecurity and web development, creating 
-                secure and efficient digital solutions.
+                I&apos;m eager to gain industry experience, contribute to impactful projects,
+                and grow as a professional in the fields of information technology,
+                software development, and web engineering.
               </p>
             </div>
 
@@ -144,10 +141,10 @@ export default function About() {
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  "Frontend Development Expert",
-                  "Cybersecurity Enthusiast",
-                  "Team Leadership Experience",
-                  "Strong Academic Performance",
+                  "BTech Information Technology Student",
+                  "Frontend & Web Development Skills",
+                  "Strong Problem-Solving Ability",
+                  "Passionate About Learning New Technologies",
                 ].map((highlight, index) => (
                   <motion.div
                     key={highlight}
