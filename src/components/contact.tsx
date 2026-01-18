@@ -8,19 +8,19 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "bishmagoud321@gmail.com",
-      href: "mailto:bishmagoud321@gmail.com"
+      value: "jeyasakthipandiaraja@gmail.com",
+      href: "mailto:jeyasakthipandiaraja@gmail.com"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 9292100822",
-      href: "tel:+919292100822"
+      value: "+91 9383493906",
+      href: "tel:+919383493906"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "Hyderabad, India",
+      value: "Chennai, India",
       href: "#"
     }
   ];
@@ -29,17 +29,17 @@ export default function Contact() {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/lingalabishmagoud"
+      href: "https://github.com/Jeyasakthi4"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/lingala-bishma-goud"
+      href: "https://www.linkedin.com/in/jeya-sakthi-p"
     },
     {
       icon: Instagram,
       label: "Instagram",
-      href: "https://www.instagram.com/bishmalingalagoud?igsh=YnVrY3g3bjdyOGx2"
+      href: "https://www.instagram.com/jeya_sakthi2005?igsh=c284bmJ0ZXUzZm54"
     }
   ];
 
@@ -132,9 +132,9 @@ export default function Contact() {
                           {social.label}
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          {social.label === 'GitHub' && 'lingalabishmagoud'}
-                          {social.label === 'LinkedIn' && 'lingala-bishma-goud'}
-                          {social.label === 'Instagram' && '@bishmalingalagoud'}
+                          {social.label === 'GitHub' && 'Jeyasakthi4'}
+                          {social.label === 'LinkedIn' && 'jeya-sakthi-p'}
+                          {social.label === 'Instagram' && '@jeya_sakthi2005'}
                         </p>
                       </div>
                     </motion.a>

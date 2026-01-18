@@ -70,7 +70,7 @@ git add .
 git commit -m "Initial portfolio setup"
 
 # Add your GitHub repository
-git remote add origin https://github.com/lingalabishmagoud/portfolio.git
+git remote add origin https://github.com/Jeyasakthi4/portfolio.git
 
 # Push to GitHub
 git push -u origin main

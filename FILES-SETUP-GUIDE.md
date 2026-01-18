@@ -8,7 +8,7 @@
 - ✅ **Certificates**: 
   - `AICTE PBLD 2001-4K-493.pdf` (viewable in Experience section)
   - `Coursera DWH25PV74C4N.pdf` (Google Cybersecurity - viewable in Experience section)
-- ✅ **LinkedIn**: Updated to `https://www.linkedin.com/in/lingala-bishma-goud`
+- ✅ **LinkedIn**: Updated to `https://www.linkedin.com/in/jeya-sakthi-p`
 
 ## 🔧 What's Working Now:
 

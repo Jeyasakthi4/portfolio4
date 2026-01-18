@@ -8,7 +8,7 @@ export default function Education() {
     {
       degree: "B.Tech in Computer Science Engineering (Cybersecurity)",
       institution: "Sphoorthy Engineering College",
-      location: "Hyderabad, India",
+      location: "Chennai, India",
       period: "2022 - 2026",
       status: "Currently Pursuing",
       gpa: "In Progress",
@@ -33,7 +33,7 @@ export default function Education() {
     {
       degree: "Intermediate (XII) - MPC",
       institution: "Sri Chaitanya Junior College",
-      location: "Telangana, India",
+      location: "Chennai, India",
       period: "2020 - 2022",
       status: "Completed",
       gpa: "9.51 GPA",
@@ -55,7 +55,7 @@ export default function Education() {
     {
       degree: "Secondary School Certificate (X)",
       institution: "Chaitanya Bharathi High School (CBSE)",
-      location: "Hyderabad, India",
+      location: "Chennai, India",
       period: "2019 - 2020",
       status: "Completed",
       gpa: "9.80 GPA",

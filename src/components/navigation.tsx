@@ -78,7 +78,7 @@ export default function Navigation() {
               }}
               className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors"
             >
-              Lingala Bishma Goud
+              Jeyasakthi P
             </a>
           </motion.div>
 

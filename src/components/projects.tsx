@@ -37,7 +37,7 @@ export default function Projects() {
         "SEO optimized",
         "Fast loading"
       ],
-      github: "https://github.com/lingalabishmagoud",
+      github: "https://github.com/Jeyasakthi4",
       demo: "#",
       category: "Portfolio",
       status: "Completed",
@@ -205,7 +205,7 @@ export default function Projects() {
               Check out my GitHub profile for more projects and contributions
             </p>
             <motion.a
-              href="https://github.com/lingalabishmagoud"
+              href="https://github.com/Jeyasakthi4"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

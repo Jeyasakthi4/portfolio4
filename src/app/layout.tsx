@@ -16,13 +16,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Lingala Bishma Goud - Frontend Developer & Cybersecurity Enthusiast",
-    template: "%s | Lingala Bishma Goud",
+    default: "Jeyasakthi P - Frontend Developer & Cybersecurity Enthusiast",
+    template: "%s | Jeyasakthi P",
   },
   description: "Computer Science undergraduate skilled in frontend development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
-  keywords: ["Lingala Bishma Goud", "Bishma Goud", "frontend developer", "web developer", "cybersecurity", "HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "student management system", "Hyderabad"],
-  authors: [{ name: "Lingala Bishma Goud" }],
-  creator: "Lingala Bishma Goud",
+  keywords: ["Jeyasakthi P", "Jeyasakthi", "frontend developer", "web developer", "cybersecurity", "HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "student management system", "Chennai"],
+  authors: [{ name: "Jeyasakthi P" }],
+  creator: "Jeyasakthi P",
   openGraph: {
     type: "website",
     locale: "en_US",

@@ -7,7 +7,7 @@ A modern, responsive portfolio website showcasing my skills in frontend developm
 ## 🌟 Live Demo
 
 - **Portfolio Website**: [Coming Soon - Deploy to Vercel]
-- **GitHub Repository**: [https://github.com/lingalabishmagoud/portfolio](https://github.com/lingalabishmagoud/portfolio)
+- **GitHub Repository**: [https://github.com/Jeyasakthi4/portfolio](https://github.com/Jeyasakthi4/portfolio)
 
 ## 👨‍💻 About Me
 
@@ -66,7 +66,7 @@ portfolio/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/lingalabishmagoud/portfolio.git
+   git clone https://github.com/Jeyasakthi4/portfolio.git
    cd portfolio
    ```
 
@@ -99,12 +99,12 @@ portfolio/
 
 ## 📞 Contact Information
 
-- **Email**: [bishmagoud321@gmail.com](mailto:bishmagoud321@gmail.com)
+- **Email**: [jeyasakthipandiraja@gmail.com](mailto:jeyasakthipandiaraja@gmail.com)
 - **Phone**: +91 9292100822
 - **Location**: Hyderabad, India
-- **LinkedIn**: [lingala-bishma-goud](https://www.linkedin.com/in/lingala-bishma-goud)
-- **GitHub**: [lingalabishmagoud](https://github.com/lingalabishmagoud)
-- **Instagram**: [@bishmalingalagoud](https://www.instagram.com/bishmalingalagoud)
+- **LinkedIn**: [jeya-sakthi-p](https://www.linkedin.com/in/jeya-sakthi-p)
+- **GitHub**: [Jeyasakthi4](https://github.com/Jeyasakthi4)
+- **Instagram**: [@jeya_sakthi2005](https://www.instagram.com/jeya_sakthi2005)
 
 ## 🚀 Deployment
 

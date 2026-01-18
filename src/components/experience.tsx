@@ -8,7 +8,7 @@ export default function Experience() {
     {
       title: "Vice President",
       company: "Cyber GenZ Club",
-      location: "Sphoorthy Engineering College, Hyderabad",
+      location: "Sphoorthy Engineering College, Chennai",
       period: "2023 - Present",
       type: "Leadership Role",
       description: "Leading cybersecurity initiatives and promoting student-led learning in AI and tech innovation.",

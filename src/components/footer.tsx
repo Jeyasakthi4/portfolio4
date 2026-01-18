@@ -9,17 +9,17 @@ export default function Footer() {
   const socialLinks = [
     {
       icon: Github,
-      href: "https://github.com/lingalabishmagoud",
+      href: "https://github.com/Jeyasakthi4",
       label: "GitHub"
     },
     {
       icon: Linkedin,
-      href: "https://www.linkedin.com/in/lingala-bishma-goud",
+      href: "https://www.linkedin.com/in/jeya-sakthi-p",
       label: "LinkedIn"
     },
     {
       icon: Mail,
-      href: "mailto:bishmagoud321@gmail.com",
+      href: "mailto:jeyasakthipandiaraja@gmail.com",
       label: "Email"
     }
   ];
@@ -59,7 +59,7 @@ export default function Footer() {
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <h3 className="text-2xl font-bold text-primary">Lingala Bishma Goud</h3>
+              <h3 className="text-2xl font-bold text-primary">Jeyasakthi P</h3>
               <p className="text-muted-foreground max-w-sm">
                 Computer Science undergraduate passionate about frontend development, 
                 cybersecurity, and creating innovative web solutions.
@@ -129,9 +129,9 @@ export default function Footer() {
             >
               <h4 className="text-lg font-semibold text-foreground">Get In Touch</h4>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p>📧 bishmagoud321@gmail.com</p>
-                <p>📱 +91 9292100822</p>
-                <p>📍 Hyderabad, India</p>
+                <p>📧 jeyasakthipandiaraja@gmail.com</p>
+                <p>📱 +91 9383493906</p>
+                <p>📍 Chennai, India</p>
               </div>
               <div className="pt-4">
                 <p className="text-sm text-muted-foreground">
@@ -152,7 +152,7 @@ export default function Footer() {
         >
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-              <span>© {currentYear} Lingala Bishma Goud. Made with</span>
+              <span>© {currentYear} Jeyasakthi P. Made with</span>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
