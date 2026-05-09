@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Jeyasakthi P" }],
   creator: "Jeyasakthi P",
   icons: {
-    icon: "/icon(2).png",
+    icon: "/icon (2).png",
   },
   openGraph: {
     type: "website",
