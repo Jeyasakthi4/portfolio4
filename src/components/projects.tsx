@@ -120,7 +120,6 @@ export default function Projects() {
       scale: 1,
       transition: {
         duration: 0.5,
-        ease: "easeOut",
       },
     },
   };
@@ -247,7 +246,7 @@ export default function Projects() {
 
               <div className="relative h-full bg-card/80 backdrop-blur-md rounded-2xl border border-border/50 overflow-hidden hover:border-primary/50 transition-all duration-300 flex flex-col">
                 {/* Image Section */}
-                <div className="relative h-64 bg-gradient-to-br from-primary/10 via-secondary/5 to-background overflow-hidden flex-shrink-0">
+                <div className="relative h-56 bg-gradient-to-br from-primary/10 via-secondary/5 to-background overflow-hidden flex-shrink-0">
                   <motion.div
                     className="absolute inset-0"
                     animate={{ 
