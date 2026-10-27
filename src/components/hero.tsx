@@ -1,259 +1,271 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowDown,
+  ArrowRight,
+  BookOpen,
+  Code2,
+  Crown,
   Github,
+  Instagram,
   Linkedin,
   Mail,
-  Download,
-  Instagram,
+  Palette,
+  Sprout,
 } from "lucide-react";
-import { useState, useEffect } from "react";
-import ClientOnly from "./client-only";
+import { useEffect, useRef, type MouseEvent } from "react";
 
-/* ================= Typing Effect ================= */
-const roles = [
-  "B.Tech Information Technology Student",
-  "Full stack Developer ",
-  "Aspiring Software Engineer",
+const socials = [
+  { label: "GitHub", href: "https://github.com/Jeyasakthi4", icon: Github },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/jeya-sakthi-p",
+    icon: Linkedin,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/jeya_sakthi2005",
+    icon: Instagram,
+  },
+  {
+    label: "Email",
+    href: "mailto:jeyasakthipandiaraja@gmail.com",
+    icon: Mail,
+  },
 ];
 
-function useTypingEffect(words: string[], speed = 120, pause = 1500) {
-  const [text, setText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+const badges = [
+  { label: "Build", icon: Code2 },
+  { label: "Design", icon: Palette },
+  { label: "Learn", icon: BookOpen },
+  { label: "Grow", icon: Sprout },
+];
 
-  useEffect(() => {
-    const currentWord = words[wordIndex];
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setText(currentWord.slice(0, charIndex + 1));
-        setCharIndex(charIndex + 1);
-
-        if (charIndex === currentWord.length) {
-          setTimeout(() => setIsDeleting(true), pause);
-        }
-      } else {
-        setText(currentWord.slice(0, charIndex - 1));
-        setCharIndex(charIndex - 1);
-
-        if (charIndex === 0) {
-          setIsDeleting(false);
-          setWordIndex((prev) => (prev + 1) % words.length);
-        }
-      }
-    }, isDeleting ? speed / 2 : speed);
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, wordIndex, words, speed, pause]);
-
-  return text;
-}
+const particles = [
+  { left: "8%", top: "24%", delay: "0s" },
+  { left: "17%", top: "70%", delay: "1.2s" },
+  { left: "31%", top: "15%", delay: "2.4s" },
+  { left: "46%", top: "77%", delay: ".7s" },
+  { left: "57%", top: "22%", delay: "1.8s" },
+  { left: "72%", top: "12%", delay: ".4s" },
+  { left: "84%", top: "68%", delay: "2s" },
+  { left: "94%", top: "37%", delay: "1s" },
+];
 
 export default function Hero() {
-  const typedText = useTypingEffect(roles);
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const sectionRef = useRef<HTMLElement>(null);
+  const cursorGlowRef = useRef<HTMLDivElement>(null);
+  const portraitRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+    const section = sectionRef.current;
+    const glow = cursorGlowRef.current;
+    if (!section || !glow) return;
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const bounds = section.getBoundingClientRect();
+      glow.style.transform = `translate3d(${event.clientX - bounds.left - 180}px, ${event.clientY - bounds.top - 180}px, 0)`;
     };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    section.addEventListener("pointermove", handlePointerMove);
+    return () => section.removeEventListener("pointermove", handlePointerMove);
   }, []);
 
-  const scrollToNext = () => {
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+  const handlePortraitMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const rotateX = ((event.clientY - bounds.top) / bounds.height - 0.5) * -8;
+    const rotateY = ((event.clientX - bounds.left) / bounds.width - 0.5) * 8;
+    event.currentTarget.style.transform = `rotate(2deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  };
+
+  const resetPortrait = (event: MouseEvent<HTMLDivElement>) => {
+    event.currentTarget.style.transform = "rotate(2deg)";
   };
 
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
-    >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-secondary/15" />
+    <section id="home" ref={sectionRef} className="hero-section">
+      <div className="hero-grid" aria-hidden="true" />
+      <div ref={cursorGlowRef} className="hero-cursor-glow" aria-hidden="true" />
+      <div className="hero-ambient hero-ambient-one" aria-hidden="true" />
+      <div className="hero-ambient hero-ambient-two" aria-hidden="true" />
+      <div className="hero-particles" aria-hidden="true">
+        {particles.map((particle, index) => (
+          <span
+            key={index}
+            className="hero-particle"
+            style={{
+              left: particle.left,
+              top: particle.top,
+              animationDelay: particle.delay,
+            }}
+          />
+        ))}
+      </div>
 
-      {/* Floating particles */}
-      <ClientOnly>
-        <div className="absolute inset-0 overflow-hidden">
-          {windowSize.width > 0 &&
-            [...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-primary/40 rounded-full"
-                initial={{
-                  x: Math.random() * windowSize.width,
-                  y: Math.random() * windowSize.height,
-                }}
-                animate={{
-                  x: Math.random() * windowSize.width,
-                  y: Math.random() * windowSize.height,
-                }}
-                transition={{
-                  duration: Math.random() * 12 + 15,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-            ))}
-        </div>
-      </ClientOnly>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-
-        {/* Neon image border */}
+      <div className="hero-content">
         <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="mb-10"
+          className="hero-copy glass-panel"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
         >
-          <div className="relative mx-auto w-60 h-60 sm:w-72 sm:h-72 rounded-3xl p-[3px]">
-            <motion.div
-              className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary via-secondary to-primary"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-            />
-            <div className="relative w-full h-full rounded-3xl bg-background overflow-hidden">
-              <img
-                src="/files/images/jeyy1.jpg"
-                alt="Jeyasakthi P – B.Tech Information Technology Student & Full Stack Developer"
-                className="w-full h-full object-cover rounded-3xl"
-              />
-            </div>
+          <div className="hero-eyebrow">
+            <span className="availability-dot" />
+            B.TECH INFORMATION TECHNOLOGY
+          </div>
+          <p className="hero-greeting">Hi, I&apos;m</p>
+          <h1 className="hero-name">Jeyasakthi P</h1>
+          <p className="hero-roles">
+            Full Stack Development Enthusiast
+            <span aria-hidden="true"> · </span>
+            UI/UX Designer
+            <span aria-hidden="true"> · </span>
+            Frontend Developer
+          </p>
+          <p className="hero-tagline">
+            Designing &amp; building
+            <br />
+            web experiences that <em>matter.</em>
+          </p>
+          <p className="hero-description">
+            I turn thoughtful ideas into intuitive, beautifully crafted digital
+            experiences — one detail at a time.
+          </p>
+
+          <div className="hero-actions">
+            <motion.a
+              href="#projects"
+              className="hero-cta"
+              whileHover={{ y: -3 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              View My Projects <ArrowRight size={17} />
+            </motion.a>
+            <a className="hero-contact-link" href="#contact">
+              Let&apos;s connect <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <div className="hero-socials" aria-label="Social links">
+            {socials.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target={href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
+              >
+                <Icon size={18} strokeWidth={1.7} />
+              </a>
+            ))}
+            <span className="socials-caption">Find me around the web</span>
           </div>
         </motion.div>
 
-        {/* Name */}
-        <motion.h1
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-4"
-        >
-          Hi, I&apos;m <span className="text-primary">Jeyasakthi P</span>
-        </motion.h1>
-
-        {/* Typing */}
-        <div className="text-xl sm:text-2xl lg:text-3xl mb-6">
-          <span className="text-primary font-semibold">
-            {typedText}
-            <span className="animate-pulse">|</span>
-          </span>
-        </div>
-
-        {/* Description */}
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
-          B.Tech Information Technology undergraduate passionate about full stack
-          development, modern UI design, and scalable web solutions.
-        </p>
-
-        {/* Tech Stack */}
-        <p className="text-sm text-muted-foreground mb-12">
-          Tech Stack: React · Next.js · Tailwind CSS · JavaScript · Git & GitHub
-        </p>
-
-        {/* Buttons */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
-        >
-          {/* Contact */}
-          <motion.a
-            whileHover={{ y: -4, scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            href="#contact"
-            className="px-10 py-3 rounded-xl font-semibold text-primary-foreground
-              bg-primary
-              shadow-[0_0_25px_rgba(99,102,241,0.6)]
-              hover:shadow-[0_0_40px_rgba(99,102,241,0.9)]
-              transition-all duration-300
-              flex items-center gap-2 justify-center"
+        <div className="hero-visual">
+          <div className="city-window" aria-hidden="true">
+            <span className="window-glow" />
+            <span className="city-building city-building-one" />
+            <span className="city-building city-building-two" />
+            <span className="city-building city-building-three" />
+          </div>
+          <div className="window-crossbar" aria-hidden="true" />
+          <svg
+            className="badge-connector"
+            viewBox="0 0 130 220"
+            fill="none"
+            aria-hidden="true"
           >
-            <Mail size={20} />
-            Get In Touch
-          </motion.a>
-
-          {/* Resume */}
-          <motion.a
-            whileHover={{ y: -4, scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            href="/files/resume/JEYASAKTHI_P_RESUME.pdf"
-            target="_blank"
-            className="px-10 py-3 rounded-xl font-semibold text-secondary-foreground
-              bg-secondary
-              shadow-[0_0_25px_rgba(236,72,153,0.6)]
-              hover:shadow-[0_0_40px_rgba(236,72,153,0.9)]
-              transition-all duration-300
-              flex items-center gap-2 justify-center"
-          >
-            <Download size={20} />
-            Download CV
-          </motion.a>
-
-          {/* GitHub */}
-          <motion.a
-            whileHover={{ y: -4, scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            href="https://github.com/Jeyasakthi4"
-            target="_blank"
-            className="px-10 py-3 rounded-xl font-semibold text-primary-foreground
-              bg-primary
-              shadow-[0_0_25px_rgba(99,102,241,0.6)]
-              hover:shadow-[0_0_40px_rgba(99,102,241,0.9)]
-              transition-all duration-300
-              flex items-center gap-2 justify-center"
-          >
-            <Github size={20} />
-            View GitHub
-          </motion.a>
-        </motion.div>
-
-        {/* Social Icons */}
-        <div className="flex justify-center gap-6 mb-12">
-          {[
-            { icon: Github, href: "https://github.com/Jeyasakthi4" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/jeya-sakthi-p" },
-            { icon: Instagram, href: "https://www.instagram.com/jeya_sakthi2005" },
-          ].map((social, i) => {
-            const Icon = social.icon;
-            return (
-              <motion.a
-                key={i}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2 }}
-                className="w-12 h-12 rounded-full bg-accent hover:bg-primary hover:text-primary-foreground
-                transition-all flex items-center justify-center"
-              >
-                <Icon size={20} />
-              </motion.a>
-            );
-          })}
-        </div>
-
-        {/* Scroll Down */}
-        <motion.button onClick={scrollToNext}>
+            <path
+              d="M4 12C90 10 112 50 48 76C-16 102 8 142 83 146C126 149 119 186 54 208"
+              stroke="url(#connector-gradient)"
+              strokeWidth="1.5"
+              strokeDasharray="4 7"
+            />
+            <defs>
+              <linearGradient id="connector-gradient" x1="0" y1="0" x2="120" y2="210">
+                <stop stopColor="#67e8f9" />
+                <stop offset="1" stopColor="#c084fc" />
+              </linearGradient>
+            </defs>
+          </svg>
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-muted-foreground hover:text-primary"
+            ref={portraitRef}
+            className="polaroid"
+            initial={{ opacity: 0, y: 30, rotate: 4 }}
+            animate={{ opacity: 1, y: 0, rotate: 2 }}
+            transition={{ duration: 0.9, delay: 0.18, ease: "easeOut" }}
+            onMouseMove={handlePortraitMove}
+            onMouseLeave={resetPortrait}
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <span className="text-sm mb-2">Scroll down</span>
-            <ArrowDown size={24} />
+            <div className="polaroid-photo">
+              <Image
+                src="/files/images/jeyy1.jpg"
+                alt="Illustrated portrait of Jeyasakthi P with long dark hair, glasses, and a dark outfit"
+                width={853}
+                height={1280}
+              />
+              <span className="photo-corner photo-corner-one" />
+              <span className="photo-corner photo-corner-two" />
+              <span className="photo-stamp">CREATIVE<br />MIND</span>
+            </div>
+            <p className="polaroid-caption">
+              Better Code
+              <br />
+              Better Tomorrow <span>♡</span>
+            </p>
           </motion.div>
-        </motion.button>
+          <div className="crown-orbit" aria-hidden="true">
+            <Crown size={23} strokeWidth={1.35} />
+          </div>
+          <div className="hero-badges">
+            {badges.map(({ label, icon: Icon }, index) => (
+              <motion.div
+                className="hero-badge"
+                key={label}
+                animate={{ y: [0, -5, 0] }}
+                transition={{
+                  duration: 3.5 + index * 0.35,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.35,
+                }}
+              >
+                <Icon size={16} strokeWidth={1.8} />
+                <span>{label}</span>
+                {label === "Build" && <span className="badge-code">&lt;/&gt;</span>}
+              </motion.div>
+            ))}
+          </div>
+          <div className="visual-spark visual-spark-one" aria-hidden="true">✳</div>
+          <div className="visual-spark visual-spark-two" aria-hidden="true">✦</div>
+        </div>
+      </div>
+
+      <div className="desk-scene" aria-hidden="true">
+        <div className="desk-shelf">
+          <div className="desk-plant">
+            <span /><span /><span /><i />
+          </div>
+          <div className="desk-books"><i>JS</i><i>REACT</i><i>UI/UX</i></div>
+          <div className="desk-laptop"><span /><i /></div>
+          <div className="desk-notebook"><span /><span /><span /><span /></div>
+          <div className="desk-pen" />
+          <div className="desk-mug"><span /></div>
+        </div>
+        <div className="desk-front" />
+      </div>
+
+      <a className="hero-scroll-cue" href="#about">
+        <span>SCROLL TO EXPLORE</span>
+        <ArrowDown size={14} />
+      </a>
+      <div className="hero-index" aria-hidden="true">
+        <span>01</span> / 07
       </div>
     </section>
   );

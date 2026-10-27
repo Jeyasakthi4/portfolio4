@@ -36,7 +36,7 @@ export default function Navigation() {
 
       const totalHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress((window.scrollY / totalHeight) * 100);
+      setScrollProgress(totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0);
 
       const sections = navItems.map((item) => item.href.substring(1));
       const currentSection = sections.find((section) => {
@@ -66,23 +66,16 @@ export default function Navigation() {
     <>
       {/* Scroll Progress Bar */}
       <div
-        className="fixed top-0 left-0 h-[3px] z-[60] bg-gradient-to-r from-primary via-secondary to-primary transition-all"
+        className="nav-progress"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-background/90 backdrop-blur-md border-b border-border shadow-lg"
-            : "bg-background/10 backdrop-blur-sm"
-        }`}
+        className={`site-nav${scrolled ? " is-scrolled" : ""}`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-
-            {/* Logo */}
+        <div className="nav-shell">
             <motion.a
               href="#home"
               onClick={(e) => {
@@ -92,18 +85,13 @@ export default function Navigation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="group flex flex-col"
+              className="nav-brand"
             >
-              <span className="text-2xl font-bold text-primary">
-                Jeyasakthi P
-              </span>
-              <span className="text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition">
-                B.Tech IT • Full Stack Developer
-              </span>
+              <strong>Jeyasakthi P</strong>
+              <span>Developer &amp; Designer</span>
             </motion.a>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-2">
+            <div className="nav-links">
               {navItems.map((item, index) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.href.substring(1);
@@ -119,78 +107,57 @@ export default function Navigation() {
                     initial={{ opacity: 0, y: -15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.08 * index }}
-                    className={`relative px-4 py-2 rounded-md text-sm font-medium transition-all duration-200
-                      ${
-                        isActive
-                          ? "text-primary"
-                          : "text-muted-foreground hover:text-primary"
-                      }`}
+                    className={`nav-link${isActive ? " is-active" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
                   >
-                    <span className="flex items-center gap-2">
-                      <Icon size={16} />
-                      {item.name}
-                    </span>
-
-                    {/* Active underline */}
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-underline"
-                        className="absolute left-0 -bottom-1 w-full h-[2px] bg-gradient-to-r from-primary to-secondary rounded-full"
-                      />
-                    )}
+                    <Icon size={15} strokeWidth={1.7} />
+                    {item.name}
                   </motion.a>
                 );
               })}
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-accent"
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              className="nav-menu-button"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
+              id="mobile-navigation"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden bg-background/95 backdrop-blur-md border-b border-border"
+              className="mobile-nav"
             >
-              <div className="px-3 py-4 space-y-1">
-                {navItems.map((item) => {
-                  const Icon = item.icon;
-                  const isActive = activeSection === item.href.substring(1);
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeSection === item.href.substring(1);
 
-                  return (
-                    <motion.a
-                      key={item.name}
-                      href={item.href}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavClick(item.href);
-                      }}
-                      whileTap={{ scale: 0.96 }}
-                      className={`flex items-center gap-3 px-3 py-2 rounded-md text-base font-medium transition
-                        ${
-                          isActive
-                            ? "bg-primary/10 text-primary"
-                            : "text-muted-foreground hover:text-primary hover:bg-accent"
-                        }`}
-                    >
-                      <Icon size={20} />
-                      {item.name}
-                    </motion.a>
-                  );
-                })}
-              </div>
+                return (
+                  <motion.a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.href);
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    className={isActive ? "is-active" : ""}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    <Icon size={17} />
+                    {item.name}
+                  </motion.a>
+                );
+              })}
             </motion.div>
           )}
         </AnimatePresence>

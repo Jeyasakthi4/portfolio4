@@ -23,7 +23,7 @@ import {
   MessageSquare,
   Users2,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Skills() {
   /* ================= Cursor Glow ================= */
@@ -36,31 +36,19 @@ export default function Skills() {
     return () => window.removeEventListener("mousemove", move);
   }, []);
 
-  /* ================= 3D Tilt ================= */
-  const useTilt = () => {
-    const ref = useRef<HTMLDivElement>(null);
+  const handleTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-    const handleMove = (e: React.MouseEvent) => {
-      const el = ref.current;
-      if (!el) return;
+    const rotateX = ((y / rect.height) - 0.5) * -10;
+    const rotateY = ((x / rect.width) - 0.5) * 10;
 
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+    e.currentTarget.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  };
 
-      const rotateX = ((y / rect.height) - 0.5) * -10;
-      const rotateY = ((x / rect.width) - 0.5) * 10;
-
-      el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    };
-
-    const reset = () => {
-      if (ref.current) {
-        ref.current.style.transform = "rotateX(0deg) rotateY(0deg)";
-      }
-    };
-
-    return { ref, handleMove, reset };
+  const resetTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.transform = "rotateX(0deg) rotateY(0deg)";
   };
 
   const skillCategories = [
@@ -159,7 +147,6 @@ export default function Skills() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
-            const tilt = useTilt();
 
             return (
               <motion.div
@@ -170,9 +157,8 @@ export default function Skills() {
                 viewport={{ once: true }}
               >
                 <div
-                  ref={tilt.ref}
-                  onMouseMove={tilt.handleMove}
-                  onMouseLeave={tilt.reset}
+                  onMouseMove={handleTilt}
+                  onMouseLeave={resetTilt}
                   className="rounded-2xl p-6 bg-background/60 backdrop-blur
                   border border-border hover:border-primary/50
                   hover:shadow-[0_0_40px_rgba(99,102,241,0.35)]

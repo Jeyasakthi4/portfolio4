@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Calendar,
   MapPin,
@@ -99,18 +100,20 @@ export default function ExperienceAndCertifications() {
   return (
     <>
       {/* ================= EXPERIENCE ================= */}
-      <section id="experience" className="py-28 bg-background">
+      <section id="experience" className="portfolio-section experience-section py-28 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            Experience
-          </h2>
+          <div className="portfolio-section-heading">
+            <span className="section-kicker">THE JOURNEY SO FAR</span>
+            <h2>Experience</h2>
+            <p>Learning by building, collaborating, and solving real-world problems.</p>
+          </div>
 
-          <div className="relative ml-6">
+          <div className="experience-timeline relative ml-4 sm:ml-6">
             <motion.span
               initial={{ height: 0 }}
               whileInView={{ height: "100%" }}
               transition={{ duration: 1 }}
-              className="absolute left-0 top-0 w-[2px] bg-gradient-to-b from-blue-500/70 to-transparent"
+              className="experience-rail absolute left-0 top-0 w-[2px]"
             />
 
             {internships.map((item, index) => (
@@ -120,21 +123,21 @@ export default function ExperienceAndCertifications() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="mb-16 ml-10 relative"
+                className="experience-entry mb-16 ml-6 sm:ml-10 relative"
               >
-                <span className="absolute -left-[47px] top-5 w-4 h-4 rounded-full bg-blue-500 shadow-[0_0_18px_rgba(59,130,246,0.9)]" />
+                <span className="experience-dot absolute -left-[31px] sm:-left-[47px] top-5 w-4 h-4 rounded-full" />
 
-                <div className="bg-background/80 backdrop-blur border border-border rounded-xl p-6 hover:-translate-y-1 transition hover:border-blue-500/50 hover:shadow-[0_0_45px_rgba(59,130,246,0.45)]">
+                <div className="experience-card glass-panel rounded-xl p-6">
                   <div className="flex items-center gap-3 mb-2">
-                    <Briefcase className="text-blue-500" />
+                    <Briefcase className="text-primary" />
                     <h3 className="text-xl font-semibold">{item.role}</h3>
                   </div>
 
-                  <span className="inline-block mb-3 text-sm text-blue-400 font-medium">
+                  <span className="inline-block mb-3 text-sm text-primary font-medium">
                     {item.company}
                   </span>
 
-                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
+                  <div className="experience-meta flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
                     <span className="flex items-center gap-1">
                       <Calendar size={14} /> {item.period}
                     </span>
@@ -151,7 +154,7 @@ export default function ExperienceAndCertifications() {
                     {item.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1 text-xs rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20"
+                        className="skill-chip px-3 py-1 text-xs rounded-full"
                       >
                         {skill}
                       </span>
@@ -161,7 +164,8 @@ export default function ExperienceAndCertifications() {
                   <a
                     href={item.certificate}
                     target="_blank"
-                    className="inline-flex items-center gap-2 text-blue-400 text-sm hover:underline"
+                    rel="noopener noreferrer"
+                    className="certificate-link inline-flex items-center gap-2 text-sm"
                   >
                     View Certificate <ExternalLink size={14} />
                   </a>
@@ -175,18 +179,19 @@ export default function ExperienceAndCertifications() {
       {/* ================= CERTIFICATIONS ================= */}
       <section
         id="certifications"
-        className="py-20 bg-gradient-to-b from-black via-[#050b1d] to-black"
+        className="portfolio-section certifications-section py-20"
       >
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center text-white mb-4">
-            Certifications
-          </h2>
-          <p className="text-center text-muted-foreground mb-14">
+          <div className="portfolio-section-heading">
+            <span className="section-kicker">ALWAYS IN PROGRESS</span>
+            <h2>Certifications</h2>
+            <p>
             Credentials that back up the skills I apply in real-world scenarios 📜
-          </p>
+            </p>
+          </div>
 
           <div
-            className="relative flex justify-center items-center h-[300px]"
+            className="relative flex justify-center items-center h-[300px] overflow-hidden"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >
@@ -206,18 +211,22 @@ export default function ExperienceAndCertifications() {
                   transition={{ type: "spring", stiffness: 120 }}
                 >
                   <a href={cert.file} target="_blank">
-                    <div className="group relative">
-                      <img
+                    <div className="certification-card group relative">
+                      <div className="certification-image">
+                      <Image
                         src={cert.image}
                         alt={cert.title}
-                        className="w-[300px] h-[210px] object-cover rounded-xl border border-white/10 shadow-xl"
+                        fill
+                        sizes="(max-width: 640px) 82vw, 300px"
+                        className="object-cover"
                       />
+                      </div>
 
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition rounded-xl flex flex-col items-center justify-center text-center px-4">
+                      <div className="certification-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition rounded-xl flex flex-col items-center justify-center text-center px-4">
                         <p className="text-white font-semibold text-sm mb-1">
                           {cert.title}
                         </p>
-                        <span className="text-blue-400 text-xs">
+                        <span className="text-primary text-xs">
                           {cert.issuer}
                         </span>
                       </div>
@@ -232,15 +241,17 @@ export default function ExperienceAndCertifications() {
           <div className="flex justify-center gap-6 mt-10">
             <button
               onClick={prev}
-              className="p-2 rounded-full border border-white/20 hover:bg-white/10"
+              aria-label="Previous certificate"
+              className="carousel-control p-2 rounded-full"
             >
-              <ChevronLeft className="text-white" />
+              <ChevronLeft />
             </button>
             <button
               onClick={next}
-              className="p-2 rounded-full border border-white/20 hover:bg-white/10"
+              aria-label="Next certificate"
+              className="carousel-control p-2 rounded-full"
             >
-              <ChevronRight className="text-white" />
+              <ChevronRight />
             </button>
           </div>
 
@@ -249,9 +260,7 @@ export default function ExperienceAndCertifications() {
             {certifications.map((_, i) => (
               <span
                 key={i}
-                className={`w-2 h-2 rounded-full ${
-                  i === current ? "bg-white" : "bg-white/30"
-                }`}
+                className={`carousel-dot${i === current ? " is-active" : ""}`}
               />
             ))}
           </div>

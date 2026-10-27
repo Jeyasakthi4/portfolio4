@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     default: "Jeyasakthi P - Full Stack Developer",
     template: "%s | Jeyasakthi P",
   },
-  description: "Computer Science undergraduate skilled in full stack development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
-  keywords: ["Jeyasakthi P", "Jeyasakthi", "full stack developer", "web developer", "cybersecurity", "HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "student management system", "Chennai"],
+  description: "Jeyasakthi P is a B.Tech Information Technology student, aspiring full stack developer, UI/UX designer, and frontend developer creating thoughtful digital experiences.",
+  keywords: ["Jeyasakthi P", "Jeyasakthi", "full stack developer", "UI/UX designer", "frontend developer", "web developer", "HTML", "CSS", "JavaScript", "React", "Chennai"],
   authors: [{ name: "Jeyasakthi P" }],
   creator: "Jeyasakthi P",
   icons: {
@@ -29,15 +29,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://jeyasakthi-p-portfolio.vercel.app",
+    url: "https://portfolio-olive-omega-68.vercel.app",
     title: "Jeyasakthi P - Full Stack Developer",
-    description: "Computer Science undergraduate skilled in full stack development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
+    description: "A B.Tech Information Technology student and aspiring full stack developer, UI/UX designer, and frontend developer creating thoughtful digital experiences.",
     siteName: "Jeyasakthi Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "jeyasakthi - Full Stack Developer ",
-    description: "Computer Science undergraduate skilled in full stack development, web technologies, and cybersecurity. Passionate about building responsive user interfaces and collaborative coding.",
+    description: "A B.Tech Information Technology student and aspiring full stack developer, UI/UX designer, and frontend developer creating thoughtful digital experiences.",
   },
   robots: {
     index: true,

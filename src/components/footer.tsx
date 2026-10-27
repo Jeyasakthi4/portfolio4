@@ -44,9 +44,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-background/80 backdrop-blur-md border-t border-border">
+    <footer className="portfolio-footer relative">
       {/* Glow Divider */}
-      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+      <div className="footer-glow-divider absolute inset-x-0 top-0 h-[1px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer */}
@@ -57,7 +57,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-4"
+            className="footer-brand space-y-4"
           >
             <h3 className="text-2xl font-bold text-primary">
               Jeyasakthi P
@@ -83,10 +83,7 @@ modern web technologies, and performance-driven user interfaces.
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.15 }}
-                    className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center
-                               hover:bg-primary hover:text-primary-foreground
-                               hover:shadow-[0_0_18px_rgba(59,130,246,0.6)]
-                               transition"
+                    className="footer-social w-10 h-10 rounded-lg flex items-center justify-center"
                   >
                     <Icon size={18} />
                   </motion.a>
@@ -117,11 +114,9 @@ modern web technologies, and performance-driven user interfaces.
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="relative text-sm text-muted-foreground hover:text-primary transition"
+                  className="footer-link relative text-sm"
                 >
-                  <span className="after:absolute after:left-0 after:-bottom-1 after:h-[1px]
-                                   after:w-0 after:bg-primary after:transition-all
-                                   hover:after:w-full">
+                  <span>
                     {link.name}
                   </span>
                 </motion.a>
@@ -155,7 +150,7 @@ modern web technologies, and performance-driven user interfaces.
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="py-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="footer-bottom py-6 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             © {currentYear} Jeyasakthi P · Made with
@@ -177,10 +172,7 @@ modern web technologies, and performance-driven user interfaces.
               whileHover={{ scale: 1.15 }}
               whileTap={{ scale: 0.95 }}
               aria-label="Scroll to top"
-              className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center
-                         hover:bg-primary hover:text-primary-foreground
-                         hover:shadow-[0_0_18px_rgba(59,130,246,0.6)]
-                         transition"
+              className="footer-top-button w-9 h-9 rounded-lg flex items-center justify-center"
             >
               <ArrowUp size={16} />
             </motion.button>
